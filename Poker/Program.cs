@@ -14,6 +14,7 @@ namespace Poker
             Application.Run(new Form1());
 
             Console.WriteLine("wtf");
+            Console.WriteLine("wsdsds");
         }
     }
 }
