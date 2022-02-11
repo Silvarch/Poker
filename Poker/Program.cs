@@ -13,7 +13,7 @@ namespace Poker
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
 
-            Console.WriteLinr("wtf");
+            Console.WriteLine("wtf");
         }
     }
 }
