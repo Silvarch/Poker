@@ -313,6 +313,16 @@ namespace Poker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KingDiamonds1 {
+            get {
+                object obj = ResourceManager.GetObject("KingDiamonds1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap KingHearts {
             get {
                 object obj = ResourceManager.GetObject("KingHearts", resourceCulture);
@@ -416,6 +426,16 @@ namespace Poker.Properties {
         internal static System.Drawing.Bitmap QueenClubs {
             get {
                 object obj = ResourceManager.GetObject("QueenClubs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QueenClubs1 {
+            get {
+                object obj = ResourceManager.GetObject("QueenClubs1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
