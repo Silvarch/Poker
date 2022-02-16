@@ -12,6 +12,12 @@ namespace Poker
         string Rank;
         string Suit;
 
+        public Card()
+        {
+            Rank = "";
+            Suit = "";
+        }
+
 
 
     /* sets the number/rank value of a card when called, based on the value of 'r'*/

@@ -8,16 +8,23 @@ namespace Poker
 {
     public class Deck
     {
+        Card c1 = new Card();
+
         public String[] NewDeck = new String[52];// this array holds the 52 card deck with each element being a card.
-        public int Turn = 0;
-        public int CardDraw = 0; //because draw number is incremented though each iteration, the card drawn will always be the next in the arrays order
+        public int Turn;
+        public int CardDraw; //because draw number is incremented though each iteration, the card drawn will always be the next in the arrays order
+
 
 
         public String[] Hand1 = new String[5]; //used to store card values of player 1's hand
         public string[] Hand2 = new string[5]; //used to store card values of player 2's hand
         /*For simplicities sake card values are stored using the folowing naming convention: RankSuit. for example: AH == Ace of hearts, JD == Jack of diamonds. This should aid whoever creates the point scoring class */
 
-        Card c1 = new Card();
+        public Deck()
+        {
+            Turn = 0;
+            CardDraw = 0;
+        }
         
 
         
