@@ -8,10 +8,20 @@ namespace Poker
 {
     internal class Card
     {
+        /* these two strings are used in the SetRank and SetSuit methods*/
         string Rank;
         string Suit;
 
-        public string SetRank(int r) // sets the number/rank value of a card when called, based on the value of 'r'
+        public Card()
+        {
+            Rank = "";
+            Suit = "";
+        }
+
+
+
+    /* sets the number/rank value of a card when called, based on the value of 'r'*/
+        public string SetRank(int r) 
         {
             switch (r)
             {
@@ -59,9 +69,9 @@ namespace Poker
             }
             return Rank;
         }
-       
-        
-        public string SetSuit(int s) //sets the suit of a card when called based on the value of 's'
+
+        /*sets the suit of a card when called based on the value of 's'*/
+        public string SetSuit(int s) 
         {
             switch (s)
             {
@@ -81,7 +91,9 @@ namespace Poker
             return Suit;
         }
 
-        public string CreateCard(int r, int s) // creates a card when called and returns thats card value as a string
+
+        /* creates a card when called and returns thats card value as a string*/
+        public string CreateCard(int r, int s) 
         {
             string Rank = SetRank(r);
             string Suit = SetSuit(s);
