@@ -20,13 +20,13 @@ namespace Poker
 
 
 
-    /* sets the number/rank value of a card when called, based on the value of 'r'*/
-        public string SetRank(int r) 
+        /* sets the number/rank value of a card when called, based on the value of 'r'*/
+        public string SetRank(int r)
         {
             switch (r)
             {
                 case 0:
-                    Rank = "Ace";
+                    Rank = "A";
                     break;
 
                 case 1:
@@ -58,34 +58,34 @@ namespace Poker
                     Rank = "10";
                     break;
                 case 10:
-                    Rank = "Jack";
+                    Rank = "J";
                     break;
                 case 11:
-                    Rank = "Queen";
+                    Rank = "Q";
                     break;
                 case 12:
-                    Rank = "King";
+                    Rank = "K";
                     break;
             }
             return Rank;
         }
 
         /*sets the suit of a card when called based on the value of 's'*/
-        public string SetSuit(int s) 
+        public string SetSuit(int s)
         {
             switch (s)
             {
                 case 0:
-                    Suit = "Diamonds";
+                    Suit = "H";
                     break;
                 case 1:
-                    Suit = "Hearts";
+                    Suit = "D";
                     break;
                 case 2:
-                    Suit = "Spades";
+                    Suit = "S";
                     break;
                 case 3:
-                    Suit = "Clubs";
+                    Suit = "C";
                     break;
             }
             return Suit;
@@ -93,13 +93,13 @@ namespace Poker
 
 
         /* creates a card when called and returns thats card value as a string*/
-        public string CreateCard(int r, int s) 
+        public string CreateCard(int r, int s)
         {
             string Rank = SetRank(r);
             string Suit = SetSuit(s);
 
             string NewLine = Environment.NewLine;
-            string Card = $"{Rank} of {Suit} {NewLine}";
+            string Card = $"{Rank}{Suit}";
 
             return Card;
         }
