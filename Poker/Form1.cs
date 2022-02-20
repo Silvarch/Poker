@@ -8,23 +8,17 @@ namespace Poker
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
         }
 
+        internal Points p1 = new Points(); // reference for the points clss whcih can now be called by the Form1 Class
+
         /* method used to shuffle the deck. if the deck does not yet exist, d1.SetDeck is called to do so before proceeding. All card images are set to null so that
          a new game can be started by clicking shuffle. Deck.CardDraw and Turn are set to zero as well for the same reason, along with the two Hand arrays. */
         private void Shuffle_Click(object sender, EventArgs e)
         {
-
-            
-            if (Deck.DeckList.Contains("A") == false)//checks to see if list has been populated "A" will always be present when poulated. sets deck if needed.
-            {
-                Deck.SetDeck();
-            }
-            Deck.BeginShuffle();
             Player1Card1.Image = null;
             Player1Card2.Image = null;
             Player1Card3.Image = null;
@@ -36,13 +30,49 @@ namespace Poker
             Player2Card4.Image = null;
             Player2Card5.Image = null;
 
-            Deck.Turn = 0;
 
-            Deck.BeginShuffle();
+            
+            PLayer1Points.Clear();
+            PLayer2Points.Clear();
+            p1.P1Points = 0;
+            p1.P2Points = 0;
             ButtonDeck.Enabled = true;
-            Array.Clear(Deck.Hand1, 0, Deck.Hand1.Length);
-            Array.Clear(Deck.Hand2, 0, Deck.Hand2.Length);
+            Deck.Reset();
+        }
 
+
+
+        private void CheckWinner_Click(object sender, EventArgs e)
+        {
+            
+            if (Deck.FullHands == true)
+            {
+                int winner;
+                p1.CheckFullHouse();
+                p1.CheckStraight();
+                p1.CheckFlush();
+                p1.CheckFourOfAKind();
+                p1.CheckThreeOfAKind();
+                p1.CheckPair();
+                p1.CheckPair();
+                winner = p1.CheckWinner();
+
+                if (winner == 1)
+                {
+                    PLayer1Points.Text = "Winner! " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Loser! " + p1.GetP2Points() +" Points";
+                }
+                else if (winner == 2)
+                {
+                    PLayer1Points.Text = "Loser " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Winner! " + p1.GetP2Points() + " Points";
+                }
+                else
+                {
+                    PLayer1Points.Text = "Tie! " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Tie! " + p1.GetP2Points() + " Points";
+                }
+            }
         }
 
 
@@ -55,16 +85,16 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+                    case "@H":
                         Player1Card1.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player1Card1.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player1Card1.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
                         Player1Card1.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -213,21 +243,21 @@ namespace Poker
                         break;
                 }
             }
-       
+
             if (Deck.Turn == 3)
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+                    case "@H":
                         Player1Card2.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player1Card2.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player1Card2.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
                         Player1Card2.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -380,16 +410,16 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+                    case "@H":
                         Player1Card3.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player1Card3.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player1Card3.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
                         Player1Card3.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -538,21 +568,23 @@ namespace Poker
                         break;
                 }
             }
-        
+
             if (Deck.Turn == 7)
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+                    case "@H":
                         Player1Card4.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player1Card4.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player1Card4.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
+        
                         Player1Card4.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -705,16 +737,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player1Card5.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player1Card5.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player1Card5.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player1Card5.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -867,16 +901,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player2Card1.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player2Card1.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player2Card1.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player2Card1.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1029,16 +1065,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player2Card2.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player2Card2.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player2Card2.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player2Card2.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1191,16 +1229,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player2Card3.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player2Card3.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player2Card3.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player2Card3.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1353,16 +1393,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player2Card4.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player2Card4.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player2Card4.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player2Card4.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1515,16 +1557,18 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
-                    case "AH":
+
+                    case "@H":
                         Player2Card5.Image = Poker.Properties.Resources.AceHearts;
                         break;
-                    case "AD":
+                    case "@D":
                         Player2Card5.Image = Poker.Properties.Resources.AceDiamonds;
                         break;
-                    case "AC":
+                    case "@C":
                         Player2Card5.Image = Poker.Properties.Resources.AceClubs;
                         break;
-                    case "AS":
+                    case "@S":
+
                         Player2Card5.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1677,10 +1721,17 @@ namespace Poker
             {
                 ButtonDeck.Enabled = false;
             }
+
+        }
+
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+
         }
             
     }
 }
-    
 
 

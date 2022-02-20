@@ -26,7 +26,8 @@ namespace Poker
             switch (r)
             {
                 case 0:
-                    Rank = "A";
+
+                    Rank = "@"; //@ is used in place of 10 to make checking for matches in the points class easier
                     break;
 
                 case 1:
@@ -55,7 +56,7 @@ namespace Poker
                     Rank = "9";
                     break;
                 case 9:
-                    Rank = "10";
+                    Rank = "10"; 
                     break;
                 case 10:
                     Rank = "J";
@@ -97,8 +98,6 @@ namespace Poker
         {
             string Rank = SetRank(r);
             string Suit = SetSuit(s);
-
-            string NewLine = Environment.NewLine;
             string Card = $"{Rank}{Suit}";
 
             return Card;
