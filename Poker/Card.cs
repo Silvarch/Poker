@@ -26,6 +26,7 @@ namespace Poker
             switch (r)
             {
                 case 0:
+
                     Rank = "@"; //@ is used in place of 10 to make checking for matches in the points class easier
                     break;
 

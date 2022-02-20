@@ -30,6 +30,7 @@ namespace Poker
             Player2Card4.Image = null;
             Player2Card5.Image = null;
 
+
             
             PLayer1Points.Clear();
             PLayer2Points.Clear();
@@ -37,8 +38,8 @@ namespace Poker
             p1.P2Points = 0;
             ButtonDeck.Enabled = true;
             Deck.Reset();
-
         }
+
 
 
         private void CheckWinner_Click(object sender, EventArgs e)
@@ -582,6 +583,8 @@ namespace Poker
                         Player1Card4.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
+        
                         Player1Card4.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -734,6 +737,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player1Card5.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -744,6 +748,7 @@ namespace Poker
                         Player1Card5.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player1Card5.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -896,6 +901,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player2Card1.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -906,6 +912,7 @@ namespace Poker
                         Player2Card1.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player2Card1.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1058,6 +1065,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player2Card2.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -1068,6 +1076,7 @@ namespace Poker
                         Player2Card2.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player2Card2.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1220,6 +1229,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player2Card3.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -1230,6 +1240,7 @@ namespace Poker
                         Player2Card3.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player2Card3.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1382,6 +1393,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player2Card4.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -1392,6 +1404,7 @@ namespace Poker
                         Player2Card4.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player2Card4.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1544,6 +1557,7 @@ namespace Poker
             {
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
+
                     case "@H":
                         Player2Card5.Image = Poker.Properties.Resources.AceHearts;
                         break;
@@ -1554,6 +1568,7 @@ namespace Poker
                         Player2Card5.Image = Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
+
                         Player2Card5.Image = Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
@@ -1706,15 +1721,17 @@ namespace Poker
             {
                 ButtonDeck.Enabled = false;
             }
+
         }
 
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+
         }
+            
     }
 }
-
 
 
