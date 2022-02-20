@@ -43,6 +43,7 @@ namespace Poker
 
         private void CheckWinner_Click(object sender, EventArgs e)
         {
+            
             if (Deck.FullHands == true)
             {
                 int winner;
@@ -57,18 +58,18 @@ namespace Poker
 
                 if (winner == 1)
                 {
-                    PLayer1Points.Text = "Winner!" + p1.GetP1Points();
-                    PLayer2Points.Text = "Loser!" + p1.GetP2Points();
+                    PLayer1Points.Text = "Winner! " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Loser! " + p1.GetP2Points() +" Points";
                 }
                 else if (winner == 2)
                 {
-                    PLayer1Points.Text = "Loser" + p1.GetP1Points();
-                    PLayer2Points.Text = "Winner!" + p1.GetP2Points();
+                    PLayer1Points.Text = "Loser " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Winner! " + p1.GetP2Points() + " Points";
                 }
                 else
                 {
-                    PLayer1Points.Text = "Tie!" + p1.GetP1Points();
-                    PLayer2Points.Text = "Tie!" + p1.GetP2Points();
+                    PLayer1Points.Text = "Tie! " + p1.GetP1Points() + " Points";
+                    PLayer2Points.Text = "Tie! " + p1.GetP2Points() + " Points";
                 }
             }
         }

@@ -172,7 +172,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(510, 671);
+            this.label2.Location = new System.Drawing.Point(486, 632);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 15);
             this.label2.TabIndex = 16;
@@ -180,7 +180,7 @@
             // 
             // PLayer2Points
             // 
-            this.PLayer2Points.Location = new System.Drawing.Point(518, 610);
+            this.PLayer2Points.Location = new System.Drawing.Point(485, 595);
             this.PLayer2Points.Name = "PLayer2Points";
             this.PLayer2Points.Size = new System.Drawing.Size(100, 23);
             this.PLayer2Points.TabIndex = 17;
@@ -194,11 +194,11 @@
             // 
             // CheckWinner
             // 
-            this.CheckWinner.Location = new System.Drawing.Point(52, 428);
+            this.CheckWinner.Location = new System.Drawing.Point(22, 409);
             this.CheckWinner.Name = "CheckWinner";
-            this.CheckWinner.Size = new System.Drawing.Size(75, 23);
+            this.CheckWinner.Size = new System.Drawing.Size(143, 23);
             this.CheckWinner.TabIndex = 19;
-            this.CheckWinner.Text = "button1";
+            this.CheckWinner.Text = "Check for A Winner";
             this.CheckWinner.UseVisualStyleBackColor = true;
             this.CheckWinner.Click += new System.EventHandler(this.CheckWinner_Click);
             // 

@@ -56,6 +56,7 @@ namespace Poker
         /* simple solution to shuffle the objects in DeckList*/
         public static void Shuffle<String>(this IList<String> DeckList)
         {
+            SetDeck();
 
             int CardCount = 52; // set to a static 52 so that no duplicate cards are printed
             while (CardCount > 1)
