@@ -74,13 +74,67 @@ namespace Poker
             }
         }
 
-         * Returns a card object when called(see ButtonDeck_Click method in the Form1 class). This method also checks to see if the deck has been loaded yet, if not, the SetDeck() method is called to do so*/
+         /* Returns a card object when called(see ButtonDeck_Click method in the Form1 class). This method also checks to see if the deck has been loaded yet, if not, the SetDeck() method is called to do so*/
         public static string Draw()
         {
             if (DeckList.Contains("A") == false)//checks to see if list has been populated "A" will always be present when poulated. sets deck if needed.
             {
                 SetDeck();
             }
+            switch (Turn)
+            {
+                case 0:
+                    Hand1[0] = DeckList[0];
+                    Turn++;
+                    return DeckList[0];
+                    
+                case 1:
+                    Hand2[0] = DeckList[1];
+                    Turn++;
+                    return DeckList[1];
+                    
+                case 2:
+                    Hand1[1] = DeckList[2];
+                    Turn++;
+                    return DeckList[2];
+                    
+                case 3:
+                    Hand2[1] = DeckList[3];
+                    Turn++;
+                    return DeckList[3];
+                case 4:
+                    Hand1[2] = DeckList[4];
+                    Turn++;
+                    return DeckList[4];
+               
+                case 5:
+                    Hand2[2] = DeckList[5];
+                    Turn++;
+                    return DeckList[5];
+                    
+                case 6:
+                    Hand1[3] = DeckList[6];
+                    Turn++;
+                    return DeckList[6];
+                    
+                case 7:
+                    Hand2[3] = DeckList[7];
+                    Turn++;
+                    return DeckList[7];
+                    
+                case 8:
+                    Hand1[4] = DeckList[8];
+                    Turn++;
+                    return DeckList[8];
+                    
+                case 9:
+                    Hand2[4] = DeckList[9];
+                    Turn++;
+                    FullHands = true;
+                    return DeckList[9];
+                    
+            }
+            return ""; //Default return required, the code should always return through switch statement
         }
     }
 }
