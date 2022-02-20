@@ -40,6 +40,11 @@
             this.Player2Card4 = new System.Windows.Forms.PictureBox();
             this.Player2Card3 = new System.Windows.Forms.PictureBox();
             this.Player2Card1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PLayer2Points = new System.Windows.Forms.TextBox();
+            this.PLayer1Points = new System.Windows.Forms.TextBox();
+            this.CheckWinner = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Player1Card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player1Card3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player1Card4)).BeginInit();
@@ -89,7 +94,7 @@
             // 
             // Player1Card5
             // 
-            this.Player1Card5.Location = new System.Drawing.Point(789, 57);
+            this.Player1Card5.Location = new System.Drawing.Point(773, 57);
             this.Player1Card5.Name = "Player1Card5";
             this.Player1Card5.Size = new System.Drawing.Size(139, 198);
             this.Player1Card5.TabIndex = 7;
@@ -155,11 +160,58 @@
             this.Player2Card1.TabIndex = 10;
             this.Player2Card1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(486, 317);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 15);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Player1Points";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(510, 671);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Player2Points";
+            // 
+            // PLayer2Points
+            // 
+            this.PLayer2Points.Location = new System.Drawing.Point(518, 610);
+            this.PLayer2Points.Name = "PLayer2Points";
+            this.PLayer2Points.Size = new System.Drawing.Size(100, 23);
+            this.PLayer2Points.TabIndex = 17;
+            // 
+            // PLayer1Points
+            // 
+            this.PLayer1Points.Location = new System.Drawing.Point(485, 280);
+            this.PLayer1Points.Name = "PLayer1Points";
+            this.PLayer1Points.Size = new System.Drawing.Size(100, 23);
+            this.PLayer1Points.TabIndex = 18;
+            // 
+            // CheckWinner
+            // 
+            this.CheckWinner.Location = new System.Drawing.Point(52, 428);
+            this.CheckWinner.Name = "CheckWinner";
+            this.CheckWinner.Size = new System.Drawing.Size(75, 23);
+            this.CheckWinner.TabIndex = 19;
+            this.CheckWinner.Text = "button1";
+            this.CheckWinner.UseVisualStyleBackColor = true;
+            this.CheckWinner.Click += new System.EventHandler(this.CheckWinner_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(939, 914);
+            this.Controls.Add(this.CheckWinner);
+            this.Controls.Add(this.PLayer1Points);
+            this.Controls.Add(this.PLayer2Points);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Player2Card2);
             this.Controls.Add(this.Player2Card5);
             this.Controls.Add(this.Player2Card4);
@@ -185,6 +237,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Player2Card3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player2Card1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,5 +254,10 @@
         private PictureBox Player2Card4;
         private PictureBox Player2Card3;
         private PictureBox Player2Card1;
+        private Label label1;
+        private Label label2;
+        private TextBox PLayer2Points;
+        private TextBox PLayer1Points;
+        private Button CheckWinner;
     }
 }
