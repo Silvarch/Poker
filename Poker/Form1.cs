@@ -31,13 +31,13 @@ namespace Poker
             Player2Card5.Image = null;
 
 
-            
+            Deck.BeginShuffle();
             PLayer1Points.Clear();
             PLayer2Points.Clear();
             p1.P1Points = 0;
             p1.P2Points = 0;
             ButtonDeck.Enabled = true;
-            Deck.Reset();
+            Deck.Turn = 0;
         }
 
 
