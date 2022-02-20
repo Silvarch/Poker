@@ -9,9 +9,9 @@ namespace Poker
 {
     public static class Deck
     {
-        static Card c1 = new Card(); // ensues that methods from the Card class can be called
+        static Card c1 = new Card(); //ensues that methods from the Card class can be called
 
-        static Points p1 = new Points();
+        static Points p1 = new Points(); //ensues that methods from the Points class can be called
 
         public static List<String> DeckList = new List<String>(); // initiates a list which will later be filled with objects via the SetDeck method
         public static bool FullHands = false; // used by Form1.CheckWinner to check if points can be counted yet
@@ -32,7 +32,7 @@ namespace Poker
         public static void SetDeck()
         {
 
-            int CardNum = 0; // used to assign gards to an array element
+            int CardNum = 0; 
 
             for (int j = 0; j < 4; j++)//the 'j' for loop will determine the suit of the card being added to DeckList
             {
@@ -42,7 +42,7 @@ namespace Poker
 
                     string card = c1.CreateCard(i, j);
                     DeckList.Add(card);
-                    CardNum++; // increases cardnum so that the next array element can be assigned
+                    CardNum++; 
 
                 }
 
@@ -77,6 +77,7 @@ namespace Poker
          /* Returns a card object when called(see ButtonDeck_Click method in the Form1 class). This method also checks to see if the deck has been loaded yet, if not, the SetDeck() method is called to do so*/
         public static string Draw()
         {
+            FullHands = false;
             if (DeckList.Contains("A") == false)//checks to see if list has been populated "A" will always be present when poulated. sets deck if needed.
             {
                 SetDeck();

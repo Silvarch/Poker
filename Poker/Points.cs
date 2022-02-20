@@ -1,4 +1,10 @@
-﻿using System;
+﻿/********************************************************************
+Name: Points.cs
+Purpose: to encapsulate functionality regarding the scoring of points
+notes: uses nested for loops along with specific if statements to appropriately add points. is called by the Form1.CheckWinner method in order to display points and winner
+*********************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -655,6 +661,7 @@ namespace Poker
             }
         }
 
+        /* checks to see if p1 or p2 one or if it was a draw */
         public int CheckWinner()
         {
             if (P1Points > P2Points)
@@ -670,11 +677,14 @@ namespace Poker
 
         }
 
+        /* Returns points to be displayed on screen */
         public int GetP1Points()
         {
 
             return P1Points;
         }
+
+        /* Returns points to be displayed on screen */
         public int GetP2Points()
         {
 

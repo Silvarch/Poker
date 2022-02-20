@@ -113,6 +113,26 @@ namespace Poker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AfterShuffle1 {
+            get {
+                object obj = ResourceManager.GetObject("AfterShuffle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap before_shuffle1 {
+            get {
+                object obj = ResourceManager.GetObject("before shuffle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CardBack {
             get {
                 object obj = ResourceManager.GetObject("CardBack", resourceCulture);
@@ -666,6 +686,16 @@ namespace Poker.Properties {
         internal static System.Drawing.Bitmap TwoSpades {
             get {
                 object obj = ResourceManager.GetObject("TwoSpades", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Winner1 {
+            get {
+                object obj = ResourceManager.GetObject("Winner1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

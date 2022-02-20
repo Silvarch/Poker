@@ -1,3 +1,8 @@
+/********************************************************************
+Name: Form1.cs
+Purpose: to encapsulate functionality regarding objects on the form
+notes: calls Deck and Points classes in order to make graphical changes to the user interface along with resetting variables in the respected classes upon the start of a new game
+*********************************************************************/
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +24,9 @@ namespace Poker
          a new game can be started by clicking shuffle. Deck.CardDraw and Turn are set to zero as well for the same reason, along with the two Hand arrays. */
         private void Shuffle_Click(object sender, EventArgs e)
         {
+            CheckWinner.Enabled = false;
+
+            BackgroundImage.BackgroundImage = global::Poker.Properties.Resources.AfterShuffle1;
             Player1Card1.Image = null;
             Player1Card2.Image = null;
             Player1Card3.Image = null;
@@ -41,10 +49,11 @@ namespace Poker
         }
 
 
-
+        /* when check winner button is clicked this method calls the points class many times to increment P1 and P2 points based on cards in each hand. It then checks for a winner and displayes a winner and loser along with total points for each player both to make bug testing easier and give the user and idea of how points are scaled */
         private void CheckWinner_Click(object sender, EventArgs e)
         {
             
+
             if (Deck.FullHands == true)
             {
                 int winner;
@@ -56,6 +65,7 @@ namespace Poker
                 p1.CheckPair();
                 p1.CheckPair();
                 winner = p1.CheckWinner();
+                BackgroundImage.BackgroundImage = global::Poker.Properties.Resources.Winner1;
 
                 if (winner == 1)
                 {
@@ -73,6 +83,7 @@ namespace Poker
                     PLayer2Points.Text = "Tie! " + p1.GetP2Points() + " Points";
                 }
             }
+            CheckWinner.Enabled = false;
         }
 
 
@@ -86,160 +97,160 @@ namespace Poker
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
                     case "@H":
-                        Player1Card1.Image = Poker.Properties.Resources.AceHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player1Card1.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player1Card1.Image = Poker.Properties.Resources.AceClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
-                        Player1Card1.Image = Poker.Properties.Resources.AceSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player1Card1.Image = Poker.Properties.Resources.TwoHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player1Card1.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player1Card1.Image = Poker.Properties.Resources.TwoClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player1Card1.Image = Poker.Properties.Resources.TwoSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player1Card1.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player1Card1.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player1Card1.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player1Card1.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player1Card1.Image = Poker.Properties.Resources.FourHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player1Card1.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player1Card1.Image = Poker.Properties.Resources.FourClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player1Card1.Image = Poker.Properties.Resources.FourSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player1Card1.Image = Poker.Properties.Resources.FiveHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player1Card1.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player1Card1.Image = Poker.Properties.Resources.FiveClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player1Card1.Image = Poker.Properties.Resources.FiveSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player1Card1.Image = Poker.Properties.Resources.SixHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player1Card1.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player1Card1.Image = Poker.Properties.Resources.SixClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player1Card1.Image = Poker.Properties.Resources.SixSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player1Card1.Image = Poker.Properties.Resources.SevenHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player1Card1.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player1Card1.Image = Poker.Properties.Resources.SevenClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player1Card1.Image = Poker.Properties.Resources.SevenSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player1Card1.Image = Poker.Properties.Resources.EightHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player1Card1.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player1Card1.Image = Poker.Properties.Resources.EightClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player1Card1.Image = Poker.Properties.Resources.EightSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player1Card1.Image = Poker.Properties.Resources.NineHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player1Card1.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player1Card1.Image = Poker.Properties.Resources.NineClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player1Card1.Image = Poker.Properties.Resources.NineSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player1Card1.Image = Poker.Properties.Resources.TenHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player1Card1.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player1Card1.Image = Poker.Properties.Resources.TenClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player1Card1.Image = Poker.Properties.Resources.TenSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player1Card1.Image = Poker.Properties.Resources.JackHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player1Card1.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player1Card1.Image = Poker.Properties.Resources.JackClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player1Card1.Image = Poker.Properties.Resources.JackSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player1Card1.Image = Poker.Properties.Resources.QueenHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player1Card1.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player1Card1.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player1Card1.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player1Card1.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player1Card1.Image = Poker.Properties.Resources.QueenSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player1Card1.Image = Poker.Properties.Resources.KingHearts;
+                        Player1Card1.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player1Card1.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player1Card1.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player1Card1.Image = Poker.Properties.Resources.KingClubs;
+                        Player1Card1.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player1Card1.Image = Poker.Properties.Resources.KingSpades;
+                        Player1Card1.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -249,160 +260,160 @@ namespace Poker
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
                     case "@H":
-                        Player1Card2.Image = Poker.Properties.Resources.AceHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player1Card2.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player1Card2.Image = Poker.Properties.Resources.AceClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
-                        Player1Card2.Image = Poker.Properties.Resources.AceSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player1Card2.Image = Poker.Properties.Resources.TwoHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player1Card2.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player1Card2.Image = Poker.Properties.Resources.TwoClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player1Card2.Image = Poker.Properties.Resources.TwoSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player1Card2.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player1Card2.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player1Card2.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player1Card2.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player1Card2.Image = Poker.Properties.Resources.FourHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player1Card2.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player1Card2.Image = Poker.Properties.Resources.FourClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player1Card2.Image = Poker.Properties.Resources.FourSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player1Card2.Image = Poker.Properties.Resources.FiveHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player1Card2.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player1Card2.Image = Poker.Properties.Resources.FiveClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player1Card2.Image = Poker.Properties.Resources.FiveSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player1Card2.Image = Poker.Properties.Resources.SixHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player1Card2.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player1Card2.Image = Poker.Properties.Resources.SixClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player1Card2.Image = Poker.Properties.Resources.SixSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player1Card2.Image = Poker.Properties.Resources.SevenHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player1Card2.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player1Card2.Image = Poker.Properties.Resources.SevenClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player1Card2.Image = Poker.Properties.Resources.SevenSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player1Card2.Image = Poker.Properties.Resources.EightHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player1Card2.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player1Card2.Image = Poker.Properties.Resources.EightClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player1Card2.Image = Poker.Properties.Resources.EightSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player1Card2.Image = Poker.Properties.Resources.NineHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player1Card2.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player1Card2.Image = Poker.Properties.Resources.NineClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player1Card2.Image = Poker.Properties.Resources.NineSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player1Card2.Image = Poker.Properties.Resources.TenHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player1Card2.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player1Card2.Image = Poker.Properties.Resources.TenClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player1Card2.Image = Poker.Properties.Resources.TenSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player1Card2.Image = Poker.Properties.Resources.JackHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player1Card2.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player1Card2.Image = Poker.Properties.Resources.JackClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player1Card2.Image = Poker.Properties.Resources.JackSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player1Card2.Image = Poker.Properties.Resources.QueenHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player1Card2.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player1Card2.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player1Card2.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player1Card2.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player1Card2.Image = Poker.Properties.Resources.QueenSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player1Card2.Image = Poker.Properties.Resources.KingHearts;
+                        Player1Card2.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player1Card2.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player1Card2.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player1Card2.Image = Poker.Properties.Resources.KingClubs;
+                        Player1Card2.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player1Card2.Image = Poker.Properties.Resources.KingSpades;
+                        Player1Card2.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -411,160 +422,160 @@ namespace Poker
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
                     case "@H":
-                        Player1Card3.Image = Poker.Properties.Resources.AceHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player1Card3.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player1Card3.Image = Poker.Properties.Resources.AceClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
-                        Player1Card3.Image = Poker.Properties.Resources.AceSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player1Card3.Image = Poker.Properties.Resources.TwoHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player1Card3.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player1Card3.Image = Poker.Properties.Resources.TwoClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player1Card3.Image = Poker.Properties.Resources.TwoSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player1Card3.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player1Card3.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player1Card3.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player1Card3.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player1Card3.Image = Poker.Properties.Resources.FourHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player1Card3.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player1Card3.Image = Poker.Properties.Resources.FourClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player1Card3.Image = Poker.Properties.Resources.FourSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player1Card3.Image = Poker.Properties.Resources.FiveHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player1Card3.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player1Card3.Image = Poker.Properties.Resources.FiveClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player1Card3.Image = Poker.Properties.Resources.FiveSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player1Card3.Image = Poker.Properties.Resources.SixHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player1Card3.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player1Card3.Image = Poker.Properties.Resources.SixClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player1Card3.Image = Poker.Properties.Resources.SixSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player1Card3.Image = Poker.Properties.Resources.SevenHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player1Card3.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player1Card3.Image = Poker.Properties.Resources.SevenClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player1Card3.Image = Poker.Properties.Resources.SevenSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player1Card3.Image = Poker.Properties.Resources.EightHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player1Card3.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player1Card3.Image = Poker.Properties.Resources.EightClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player1Card3.Image = Poker.Properties.Resources.EightSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player1Card3.Image = Poker.Properties.Resources.NineHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player1Card3.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player1Card3.Image = Poker.Properties.Resources.NineClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player1Card3.Image = Poker.Properties.Resources.NineSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player1Card3.Image = Poker.Properties.Resources.TenHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player1Card3.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player1Card3.Image = Poker.Properties.Resources.TenClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player1Card3.Image = Poker.Properties.Resources.TenSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player1Card3.Image = Poker.Properties.Resources.JackHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player1Card3.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player1Card3.Image = Poker.Properties.Resources.JackClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player1Card3.Image = Poker.Properties.Resources.JackSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player1Card3.Image = Poker.Properties.Resources.QueenHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player1Card3.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player1Card3.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player1Card3.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player1Card3.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player1Card3.Image = Poker.Properties.Resources.QueenSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player1Card3.Image = Poker.Properties.Resources.KingHearts;
+                        Player1Card3.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player1Card3.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player1Card3.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player1Card3.Image = Poker.Properties.Resources.KingClubs;
+                        Player1Card3.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player1Card3.Image = Poker.Properties.Resources.KingSpades;
+                        Player1Card3.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -574,162 +585,162 @@ namespace Poker
                 switch (n)// n has the value returned by Deck.draw which returns the approriate Deck.DeckList card for the draw
                 {
                     case "@H":
-                        Player1Card4.Image = Poker.Properties.Resources.AceHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player1Card4.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player1Card4.Image = Poker.Properties.Resources.AceClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-        
-                        Player1Card4.Image = Poker.Properties.Resources.AceSpades;
+
+                        Player1Card4.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player1Card4.Image = Poker.Properties.Resources.TwoHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player1Card4.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player1Card4.Image = Poker.Properties.Resources.TwoClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player1Card4.Image = Poker.Properties.Resources.TwoSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player1Card4.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player1Card4.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player1Card4.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player1Card4.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player1Card4.Image = Poker.Properties.Resources.FourHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player1Card4.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player1Card4.Image = Poker.Properties.Resources.FourClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player1Card4.Image = Poker.Properties.Resources.FourSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player1Card4.Image = Poker.Properties.Resources.FiveHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player1Card4.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player1Card4.Image = Poker.Properties.Resources.FiveClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player1Card4.Image = Poker.Properties.Resources.FiveSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player1Card4.Image = Poker.Properties.Resources.SixHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player1Card4.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player1Card4.Image = Poker.Properties.Resources.SixClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player1Card4.Image = Poker.Properties.Resources.SixSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player1Card4.Image = Poker.Properties.Resources.SevenHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player1Card4.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player1Card4.Image = Poker.Properties.Resources.SevenClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player1Card4.Image = Poker.Properties.Resources.SevenSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player1Card4.Image = Poker.Properties.Resources.EightHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player1Card4.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player1Card4.Image = Poker.Properties.Resources.EightClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player1Card4.Image = Poker.Properties.Resources.EightSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player1Card4.Image = Poker.Properties.Resources.NineHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player1Card4.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player1Card4.Image = Poker.Properties.Resources.NineClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player1Card4.Image = Poker.Properties.Resources.NineSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player1Card4.Image = Poker.Properties.Resources.TenHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player1Card4.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player1Card4.Image = Poker.Properties.Resources.TenClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player1Card4.Image = Poker.Properties.Resources.TenSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player1Card4.Image = Poker.Properties.Resources.JackHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player1Card4.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player1Card4.Image = Poker.Properties.Resources.JackClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player1Card4.Image = Poker.Properties.Resources.JackSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player1Card4.Image = Poker.Properties.Resources.QueenHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player1Card4.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player1Card4.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player1Card4.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player1Card4.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player1Card4.Image = Poker.Properties.Resources.QueenSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player1Card4.Image = Poker.Properties.Resources.KingHearts;
+                        Player1Card4.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player1Card4.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player1Card4.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player1Card4.Image = Poker.Properties.Resources.KingClubs;
+                        Player1Card4.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player1Card4.Image = Poker.Properties.Resources.KingSpades;
+                        Player1Card4.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -739,161 +750,161 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player1Card5.Image = Poker.Properties.Resources.AceHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player1Card5.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player1Card5.Image = Poker.Properties.Resources.AceClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player1Card5.Image = Poker.Properties.Resources.AceSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player1Card5.Image = Poker.Properties.Resources.TwoHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player1Card5.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player1Card5.Image = Poker.Properties.Resources.TwoClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player1Card5.Image = Poker.Properties.Resources.TwoSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player1Card5.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player1Card5.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player1Card5.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player1Card5.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player1Card5.Image = Poker.Properties.Resources.FourHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player1Card5.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player1Card5.Image = Poker.Properties.Resources.FourClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player1Card5.Image = Poker.Properties.Resources.FourSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player1Card5.Image = Poker.Properties.Resources.FiveHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player1Card5.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player1Card5.Image = Poker.Properties.Resources.FiveClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player1Card5.Image = Poker.Properties.Resources.FiveSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player1Card5.Image = Poker.Properties.Resources.SixHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player1Card5.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player1Card5.Image = Poker.Properties.Resources.SixClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player1Card5.Image = Poker.Properties.Resources.SixSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player1Card5.Image = Poker.Properties.Resources.SevenHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player1Card5.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player1Card5.Image = Poker.Properties.Resources.SevenClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player1Card5.Image = Poker.Properties.Resources.SevenSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player1Card5.Image = Poker.Properties.Resources.EightHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player1Card5.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player1Card5.Image = Poker.Properties.Resources.EightClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player1Card5.Image = Poker.Properties.Resources.EightSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player1Card5.Image = Poker.Properties.Resources.NineHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player1Card5.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player1Card5.Image = Poker.Properties.Resources.NineClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player1Card5.Image = Poker.Properties.Resources.NineSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player1Card5.Image = Poker.Properties.Resources.TenHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player1Card5.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player1Card5.Image = Poker.Properties.Resources.TenClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player1Card5.Image = Poker.Properties.Resources.TenSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player1Card5.Image = Poker.Properties.Resources.JackHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player1Card5.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player1Card5.Image = Poker.Properties.Resources.JackClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player1Card5.Image = Poker.Properties.Resources.JackSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player1Card5.Image = Poker.Properties.Resources.QueenHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player1Card5.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player1Card5.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player1Card5.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player1Card5.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player1Card5.Image = Poker.Properties.Resources.QueenSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player1Card5.Image = Poker.Properties.Resources.KingHearts;
+                        Player1Card5.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player1Card5.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player1Card5.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player1Card5.Image = Poker.Properties.Resources.KingClubs;
+                        Player1Card5.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player1Card5.Image = Poker.Properties.Resources.KingSpades;
+                        Player1Card5.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -903,161 +914,161 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player2Card1.Image = Poker.Properties.Resources.AceHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player2Card1.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player2Card1.Image = Poker.Properties.Resources.AceClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player2Card1.Image = Poker.Properties.Resources.AceSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player2Card1.Image = Poker.Properties.Resources.TwoHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player2Card1.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player2Card1.Image = Poker.Properties.Resources.TwoClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player2Card1.Image = Poker.Properties.Resources.TwoSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player2Card1.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player2Card1.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player2Card1.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player2Card1.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player2Card1.Image = Poker.Properties.Resources.FourHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player2Card1.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player2Card1.Image = Poker.Properties.Resources.FourClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player2Card1.Image = Poker.Properties.Resources.FourSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player2Card1.Image = Poker.Properties.Resources.FiveHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player2Card1.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player2Card1.Image = Poker.Properties.Resources.FiveClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player2Card1.Image = Poker.Properties.Resources.FiveSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player2Card1.Image = Poker.Properties.Resources.SixHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player2Card1.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player2Card1.Image = Poker.Properties.Resources.SixClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player2Card1.Image = Poker.Properties.Resources.SixSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player2Card1.Image = Poker.Properties.Resources.SevenHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player2Card1.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player2Card1.Image = Poker.Properties.Resources.SevenClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player2Card1.Image = Poker.Properties.Resources.SevenSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player2Card1.Image = Poker.Properties.Resources.EightHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player2Card1.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player2Card1.Image = Poker.Properties.Resources.EightClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player2Card1.Image = Poker.Properties.Resources.EightSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player2Card1.Image = Poker.Properties.Resources.NineHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player2Card1.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player2Card1.Image = Poker.Properties.Resources.NineClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player2Card1.Image = Poker.Properties.Resources.NineSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player2Card1.Image = Poker.Properties.Resources.TenHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player2Card1.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player2Card1.Image = Poker.Properties.Resources.TenClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player2Card1.Image = Poker.Properties.Resources.TenSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player2Card1.Image = Poker.Properties.Resources.JackHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player2Card1.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player2Card1.Image = Poker.Properties.Resources.JackClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player2Card1.Image = Poker.Properties.Resources.JackSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player2Card1.Image = Poker.Properties.Resources.QueenHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player2Card1.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player2Card1.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player2Card1.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player2Card1.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player2Card1.Image = Poker.Properties.Resources.QueenSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player2Card1.Image = Poker.Properties.Resources.KingHearts;
+                        Player2Card1.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player2Card1.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player2Card1.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player2Card1.Image = Poker.Properties.Resources.KingClubs;
+                        Player2Card1.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player2Card1.Image = Poker.Properties.Resources.KingSpades;
+                        Player2Card1.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -1067,161 +1078,161 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player2Card2.Image = Poker.Properties.Resources.AceHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player2Card2.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player2Card2.Image = Poker.Properties.Resources.AceClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player2Card2.Image = Poker.Properties.Resources.AceSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player2Card2.Image = Poker.Properties.Resources.TwoHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player2Card2.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player2Card2.Image = Poker.Properties.Resources.TwoClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player2Card2.Image = Poker.Properties.Resources.TwoSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player2Card2.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player2Card2.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player2Card2.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player2Card2.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player2Card2.Image = Poker.Properties.Resources.FourHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player2Card2.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player2Card2.Image = Poker.Properties.Resources.FourClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player2Card2.Image = Poker.Properties.Resources.FourSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player2Card2.Image = Poker.Properties.Resources.FiveHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player2Card2.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player2Card2.Image = Poker.Properties.Resources.FiveClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player2Card2.Image = Poker.Properties.Resources.FiveSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player2Card2.Image = Poker.Properties.Resources.SixHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player2Card2.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player2Card2.Image = Poker.Properties.Resources.SixClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player2Card2.Image = Poker.Properties.Resources.SixSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player2Card2.Image = Poker.Properties.Resources.SevenHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player2Card2.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player2Card2.Image = Poker.Properties.Resources.SevenClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player2Card2.Image = Poker.Properties.Resources.SevenSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player2Card2.Image = Poker.Properties.Resources.EightHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player2Card2.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player2Card2.Image = Poker.Properties.Resources.EightClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player2Card2.Image = Poker.Properties.Resources.EightSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player2Card2.Image = Poker.Properties.Resources.NineHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player2Card2.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player2Card2.Image = Poker.Properties.Resources.NineClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player2Card2.Image = Poker.Properties.Resources.NineSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player2Card2.Image = Poker.Properties.Resources.TenHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player2Card2.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player2Card2.Image = Poker.Properties.Resources.TenClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player2Card2.Image = Poker.Properties.Resources.TenSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player2Card2.Image = Poker.Properties.Resources.JackHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player2Card2.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player2Card2.Image = Poker.Properties.Resources.JackClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player2Card2.Image = Poker.Properties.Resources.JackSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player2Card2.Image = Poker.Properties.Resources.QueenHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player2Card2.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player2Card2.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player2Card2.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player2Card2.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player2Card2.Image = Poker.Properties.Resources.QueenSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player2Card2.Image = Poker.Properties.Resources.KingHearts;
+                        Player2Card2.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player2Card2.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player2Card2.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player2Card2.Image = Poker.Properties.Resources.KingClubs;
+                        Player2Card2.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player2Card2.Image = Poker.Properties.Resources.KingSpades;
+                        Player2Card2.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -1231,161 +1242,161 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player2Card3.Image = Poker.Properties.Resources.AceHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player2Card3.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player2Card3.Image = Poker.Properties.Resources.AceClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player2Card3.Image = Poker.Properties.Resources.AceSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player2Card3.Image = Poker.Properties.Resources.TwoHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player2Card3.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player2Card3.Image = Poker.Properties.Resources.TwoClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player2Card3.Image = Poker.Properties.Resources.TwoSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player2Card3.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player2Card3.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player2Card3.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player2Card3.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player2Card3.Image = Poker.Properties.Resources.FourHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player2Card3.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player2Card3.Image = Poker.Properties.Resources.FourClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player2Card3.Image = Poker.Properties.Resources.FourSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player2Card3.Image = Poker.Properties.Resources.FiveHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player2Card3.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player2Card3.Image = Poker.Properties.Resources.FiveClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player2Card3.Image = Poker.Properties.Resources.FiveSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player2Card3.Image = Poker.Properties.Resources.SixHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player2Card3.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player2Card3.Image = Poker.Properties.Resources.SixClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player2Card3.Image = Poker.Properties.Resources.SixSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player2Card3.Image = Poker.Properties.Resources.SevenHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player2Card3.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player2Card3.Image = Poker.Properties.Resources.SevenClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player2Card3.Image = Poker.Properties.Resources.SevenSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player2Card3.Image = Poker.Properties.Resources.EightHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player2Card3.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player2Card3.Image = Poker.Properties.Resources.EightClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player2Card3.Image = Poker.Properties.Resources.EightSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player2Card3.Image = Poker.Properties.Resources.NineHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player2Card3.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player2Card3.Image = Poker.Properties.Resources.NineClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player2Card3.Image = Poker.Properties.Resources.NineSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player2Card3.Image = Poker.Properties.Resources.TenHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player2Card3.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player2Card3.Image = Poker.Properties.Resources.TenClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player2Card3.Image = Poker.Properties.Resources.TenSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player2Card3.Image = Poker.Properties.Resources.JackHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player2Card3.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player2Card3.Image = Poker.Properties.Resources.JackClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player2Card3.Image = Poker.Properties.Resources.JackSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player2Card3.Image = Poker.Properties.Resources.QueenHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player2Card3.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player2Card3.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player2Card3.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player2Card3.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player2Card3.Image = Poker.Properties.Resources.QueenSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player2Card3.Image = Poker.Properties.Resources.KingHearts;
+                        Player2Card3.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player2Card3.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player2Card3.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player2Card3.Image = Poker.Properties.Resources.KingClubs;
+                        Player2Card3.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player2Card3.Image = Poker.Properties.Resources.KingSpades;
+                        Player2Card3.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -1395,161 +1406,161 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player2Card4.Image = Poker.Properties.Resources.AceHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player2Card4.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player2Card4.Image = Poker.Properties.Resources.AceClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player2Card4.Image = Poker.Properties.Resources.AceSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player2Card4.Image = Poker.Properties.Resources.TwoHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player2Card4.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player2Card4.Image = Poker.Properties.Resources.TwoClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player2Card4.Image = Poker.Properties.Resources.TwoSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player2Card4.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player2Card4.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player2Card4.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player2Card4.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player2Card4.Image = Poker.Properties.Resources.FourHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player2Card4.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player2Card4.Image = Poker.Properties.Resources.FourClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player2Card4.Image = Poker.Properties.Resources.FourSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player2Card4.Image = Poker.Properties.Resources.FiveHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player2Card4.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player2Card4.Image = Poker.Properties.Resources.FiveClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player2Card4.Image = Poker.Properties.Resources.FiveSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player2Card4.Image = Poker.Properties.Resources.SixHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player2Card4.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player2Card4.Image = Poker.Properties.Resources.SixClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player2Card4.Image = Poker.Properties.Resources.SixSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player2Card4.Image = Poker.Properties.Resources.SevenHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player2Card4.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player2Card4.Image = Poker.Properties.Resources.SevenClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player2Card4.Image = Poker.Properties.Resources.SevenSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player2Card4.Image = Poker.Properties.Resources.EightHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player2Card4.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player2Card4.Image = Poker.Properties.Resources.EightClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player2Card4.Image = Poker.Properties.Resources.EightSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player2Card4.Image = Poker.Properties.Resources.NineHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player2Card4.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player2Card4.Image = Poker.Properties.Resources.NineClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player2Card4.Image = Poker.Properties.Resources.NineSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player2Card4.Image = Poker.Properties.Resources.TenHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player2Card4.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player2Card4.Image = Poker.Properties.Resources.TenClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player2Card4.Image = Poker.Properties.Resources.TenSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player2Card4.Image = Poker.Properties.Resources.JackHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player2Card4.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player2Card4.Image = Poker.Properties.Resources.JackClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player2Card4.Image = Poker.Properties.Resources.JackSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player2Card4.Image = Poker.Properties.Resources.QueenHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player2Card4.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player2Card4.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player2Card4.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player2Card4.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player2Card4.Image = Poker.Properties.Resources.QueenSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player2Card4.Image = Poker.Properties.Resources.KingHearts;
+                        Player2Card4.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player2Card4.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player2Card4.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player2Card4.Image = Poker.Properties.Resources.KingClubs;
+                        Player2Card4.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player2Card4.Image = Poker.Properties.Resources.KingSpades;
+                        Player2Card4.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
@@ -1559,167 +1570,168 @@ namespace Poker
                 {
 
                     case "@H":
-                        Player2Card5.Image = Poker.Properties.Resources.AceHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.AceHearts;
                         break;
                     case "@D":
-                        Player2Card5.Image = Poker.Properties.Resources.AceDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.AceDiamonds;
                         break;
                     case "@C":
-                        Player2Card5.Image = Poker.Properties.Resources.AceClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.AceClubs;
                         break;
                     case "@S":
 
-                        Player2Card5.Image = Poker.Properties.Resources.AceSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.AceSpades;
                         break;
                     case "2H":
-                        Player2Card5.Image = Poker.Properties.Resources.TwoHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TwoHearts;
                         break;
                     case "2D":
-                        Player2Card5.Image = Poker.Properties.Resources.TwoDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TwoDiamonds;
                         break;
                     case "2C":
-                        Player2Card5.Image = Poker.Properties.Resources.TwoClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TwoClubs;
                         break;
                     case "2S":
-                        Player2Card5.Image = Poker.Properties.Resources.TwoSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TwoSpades;
                         break;
                     case "3H":
-                        Player2Card5.Image = Poker.Properties.Resources.ThreeHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.ThreeHearts;
                         break;
                     case "3D":
-                        Player2Card5.Image = Poker.Properties.Resources.ThreeDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.ThreeDiamonds;
                         break;
                     case "3C":
-                        Player2Card5.Image = Poker.Properties.Resources.ThreeClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.ThreeClubs;
                         break;
                     case "3S":
-                        Player2Card5.Image = Poker.Properties.Resources.ThreeSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.ThreeSpades;
                         break;
                     case "4H":
-                        Player2Card5.Image = Poker.Properties.Resources.FourHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FourHearts;
                         break;
                     case "4D":
-                        Player2Card5.Image = Poker.Properties.Resources.FourDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FourDiamonds;
                         break;
                     case "4C":
-                        Player2Card5.Image = Poker.Properties.Resources.FourClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FourClubs;
                         break;
                     case "4S":
-                        Player2Card5.Image = Poker.Properties.Resources.FourSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FourSpades;
                         break;
                     case "5H":
-                        Player2Card5.Image = Poker.Properties.Resources.FiveHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FiveHearts;
                         break;
                     case "5D":
-                        Player2Card5.Image = Poker.Properties.Resources.FiveDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FiveDiamonds;
                         break;
                     case "5C":
-                        Player2Card5.Image = Poker.Properties.Resources.FiveClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FiveClubs;
                         break;
                     case "5S":
-                        Player2Card5.Image = Poker.Properties.Resources.FiveSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.FiveSpades;
                         break;
                     case "6H":
-                        Player2Card5.Image = Poker.Properties.Resources.SixHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SixHearts;
                         break;
                     case "6D":
-                        Player2Card5.Image = Poker.Properties.Resources.SixDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SixDiamonds;
                         break;
                     case "6C":
-                        Player2Card5.Image = Poker.Properties.Resources.SixClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SixClubs;
                         break;
                     case "6S":
-                        Player2Card5.Image = Poker.Properties.Resources.SixSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SixSpades;
                         break;
                     case "7H":
-                        Player2Card5.Image = Poker.Properties.Resources.SevenHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SevenHearts;
                         break;
                     case "7D":
-                        Player2Card5.Image = Poker.Properties.Resources.SevenDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SevenDiamonds;
                         break;
                     case "7C":
-                        Player2Card5.Image = Poker.Properties.Resources.SevenClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SevenClubs;
                         break;
                     case "7S":
-                        Player2Card5.Image = Poker.Properties.Resources.SevenSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.SevenSpades;
                         break;
                     case "8H":
-                        Player2Card5.Image = Poker.Properties.Resources.EightHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.EightHearts;
                         break;
                     case "8D":
-                        Player2Card5.Image = Poker.Properties.Resources.EightDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.EightDiamonds;
                         break;
                     case "8C":
-                        Player2Card5.Image = Poker.Properties.Resources.EightClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.EightClubs;
                         break;
                     case "8S":
-                        Player2Card5.Image = Poker.Properties.Resources.EightSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.EightSpades;
                         break;
                     case "9H":
-                        Player2Card5.Image = Poker.Properties.Resources.NineHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.NineHearts;
                         break;
                     case "9D":
-                        Player2Card5.Image = Poker.Properties.Resources.NineDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.NineDiamonds;
                         break;
                     case "9C":
-                        Player2Card5.Image = Poker.Properties.Resources.NineClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.NineClubs;
                         break;
                     case "9S":
-                        Player2Card5.Image = Poker.Properties.Resources.NineSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.NineSpades;
                         break;
                     case "10H":
-                        Player2Card5.Image = Poker.Properties.Resources.TenHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TenHearts;
                         break;
                     case "10D":
-                        Player2Card5.Image = Poker.Properties.Resources.TenDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TenDiamonds;
                         break;
                     case "10C":
-                        Player2Card5.Image = Poker.Properties.Resources.TenClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TenClubs;
                         break;
                     case "10S":
-                        Player2Card5.Image = Poker.Properties.Resources.TenSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.TenSpades;
                         break;
                     case "JH":
-                        Player2Card5.Image = Poker.Properties.Resources.JackHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.JackHearts;
                         break;
                     case "JD":
-                        Player2Card5.Image = Poker.Properties.Resources.JackDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.JackDiamonds;
                         break;
                     case "JC":
-                        Player2Card5.Image = Poker.Properties.Resources.JackClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.JackClubs;
                         break;
                     case "JS":
-                        Player2Card5.Image = Poker.Properties.Resources.JackSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.JackSpades;
                         break;
                     case "QH":
-                        Player2Card5.Image = Poker.Properties.Resources.QueenHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.QueenHearts;
                         break;
                     case "QD":
-                        Player2Card5.Image = Poker.Properties.Resources.QueenDiamonds;
+                        Player2Card5.Image = global::Poker.Properties.Resources.QueenDiamonds;
                         break;
                     case "QC":
-                        Player2Card5.Image = Poker.Properties.Resources.QueenClubs1;
+                        Player2Card5.Image = global::Poker.Properties.Resources.QueenClubs1;
                         break;
                     case "QS":
-                        Player2Card5.Image = Poker.Properties.Resources.QueenSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.QueenSpades;
                         break;
                     case "KH":
-                        Player2Card5.Image = Poker.Properties.Resources.KingHearts;
+                        Player2Card5.Image = global::Poker.Properties.Resources.KingHearts;
                         break;
                     case "KD":
-                        Player2Card5.Image = Poker.Properties.Resources.KingDiamonds1;
+                        Player2Card5.Image = global::Poker.Properties.Resources.KingDiamonds1;
                         break;
                     case "KC":
-                        Player2Card5.Image = Poker.Properties.Resources.KingClubs;
+                        Player2Card5.Image = global::Poker.Properties.Resources.KingClubs;
                         break;
                     case "KS":
-                        Player2Card5.Image = Poker.Properties.Resources.KingSpades;
+                        Player2Card5.Image = global::Poker.Properties.Resources.KingSpades;
                         break;
                 }
             }
             if (Deck.Turn >= 10)
             {
                 ButtonDeck.Enabled = false;
+                CheckWinner.Enabled = true;
             }
 
         }

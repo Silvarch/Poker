@@ -1,4 +1,9 @@
-﻿using System;
+﻿/********************************************************************
+Name: Cards.cs
+Purpose: to encapsulate functionality regarding the creation of card objects
+notes: very basic class that is called by the Deck class to create cards that are stored in an array via the Deck.SetDeck method in the Deck Class
+*********************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
